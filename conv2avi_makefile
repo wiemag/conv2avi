@@ -1,0 +1,16 @@
+SHELL = /bin/bash
+
+VENC = -c:v libxvid
+AENC = -c:a libmp3lame
+
+%.avi: %.mp4
+	ffmpeg -i $< \
+		$(VENC) -vb $(shell echo `ffprobe $< 2>&1 |grep bitrate|cut -d" " -f8`'K') \
+		$(AENC) -ab $(shell echo $$((`ffprobe "$<" 2>&1|grep Audio: |cut -d" " -f16`/16*16))'K') \
+		$@
+
+%.avi: %.mkv
+	ffmpeg -i $< \
+		$(VENC) -vb $(shell echo `ffprobe $< 2>&1 |grep bitrate|cut -d" " -f8`'K') \
+		$(AENC) -ab $(shell x=$$((`ffprobe "$<" 2>&1|grep Audio: |cut -d" " -f13`/16*16)); echo $$((x>0?x:128))'K') \
+		$@
