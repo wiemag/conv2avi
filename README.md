@@ -8,6 +8,7 @@ it uses gnu make (Makefile) to do a chosen number of conversions simultaneously.
 
 
 CONVERSION
+
 - mp4 --> avi (default)
 - mkv --> avi
 - Original video bit rate is kept.
@@ -19,6 +20,7 @@ No other conversion parameters are used.
 
 
 INSTALLATION
+
 conv2avi.sh  is a bash script and does not need any installation.
 - Dependencies: 			ffmpeg, findutils
 - Optional dependencies: 	wipe
@@ -26,6 +28,7 @@ conv2avi.sh  is a bash script and does not need any installation.
 
 
 USAGE
+
 Put the enclosed conv2avi_makefile into the directory with the mp4's and mkv's that you want to convert.
 
 The command
